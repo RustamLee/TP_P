@@ -3,24 +3,22 @@ Trabajo práctico en grupo.  Universidad Tecnológica Nacional, Mar del Plata
 UML diagram: https://drive.google.com/file/d/1h1cFOmklX779Gvo-TJU82N4HqMNciffV/view?usp=sharing
 
 Bloques de proyecto:
-1) Gestión de usuarios. Almacenamiento de datos y seguridad
-Funciones implementadas para la gestión de usuarios y sus contraseñas.
-Implementación del mecanismo de almacenamiento de datos:
-Leer y escribir usuarios y reservas en archivos (JSON/ texto).
-Hashing de contraseñas. Configure el manejo de excepciones y el registro para gestionar los errores.
-IMPORTANTE:
-- Sólo el Administrador puede agregar un nuevo empleado al sistema,
-- El cliente tiene acceso al sistema sólo si tiene una reserva activa,
-- Después de agregar un nuevo empleado al sistema o crear reservas para un cliente, se crea una contraseña por defecto (número de DNI), que debe cambiarse la primera vez que inicia sesión en el sistema. Login es email. 
+1)
+- Gestión de usuarios: 
+Administrar el acceso al sistema para empleados y clientes, métodos de login y logout, métodos para actualizar la contraseña (por defecto la contraseña es DNI, pero después del primer inicio de sesión debe cambiarla y login es email). Después de agregar un nuevo empleado al sistema o crear reservas para un cliente, se crea una contraseña por defecto (número de DNI). La nueva contraseña no puede ser el número del DNI. Después de eliminar un empleado del sistema, el acceso al sistema se bloquea. El cliente puede iniciar sesión en el sistema solo si tiene una reserva activa. Las contraseñas se almacenan en el archivo en forma cifrada.
+- Gestion de Hotel:
+Agregar un nuevo empleado, eliminar un empleado del sistema, cambiarlo. Agregar/eliminar/editar datos de habitaciones. Costo de reservas. Sólo el Administrador puede manejar los datos de Hotel.
+- Gestion de archivos:
+  El sistema de almacenamiento de datos está estructurado de la siguiente manera: cuando se inicia el programa, los datos de los archivos se cargan en colecciones. Mientras el programa se está ejecutando, toda la interacción con los datos ocurre en colecciones (agregar/eliminar/editar/controlar duplicados). Una vez que se cierra el programa, todos los datos se envían desde las colecciones a los archivos. Los datos starán disponibles la próxima vez que los inicies.
+    
+2)
+- Gestión de reservas: 
+Implementación de lógica de gestión de habitaciones y reservas.
+Métodos de check-in, check-out y consulta de disponibilidad de habitaciones. Manejo de excepciones. 
+Gestión del almacenamiento de información similar al almacenamiento de datos de los empleados (se utiliza GestiónArchivos).
 
-   
-3) Gestión de reservas
-Implementación de lógica de gestión de habitaciones y reservas:
-Métodos de check-in, check-out y consulta de disponibilidad de habitaciones.
-Almacenamiento de información sobre reservas.
-Manejo de excepciones
-
-5) Interfaz de usuario
+3)
+- Interfaz de usuario:
 Desarrollo de una interfaz para la interacción con los usuarios:
 Interfaz de consola o interfaz gráfica de usuario (GUI).
 Creación de métodos de login, registro y reserva de salas.
