@@ -1,8 +1,8 @@
-package Model;
+package Modelo;
 
-import Interfaces.IAccionesUsuario;
+import Interfaces.IAccionesUsuarios;
 
-public class Empleado extends Usuario implements IAccionesUsuario {
+public class Empleado extends Usuario implements IAccionesUsuarios {
     public String email;//
     public String telefono;
 

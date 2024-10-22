@@ -1,4 +1,8 @@
 package Interfaces;
 
-public class IAccionesUsuarios {
+public interface IAccionesUsuarios {
+
+    public void login();
+    public void logout();
+
 }
