@@ -14,51 +14,30 @@ import java.util.HashMap;
 public class GestionHotel {
 
     private HashMap<String, Empleado> empleados;
-    private String  FILE_PATH = "empleados.json";
-    private Gson gson;
 
     // Constructor
     public GestionHotel() {
         empleados = new HashMap<>();
-        gson = new Gson();
     }
 
-    // antes de guardar los empleados en el archivo JSON hay que revisar si ya existe un empleado con el mismo DNI
-    // -> por eso leemos el archivo JSON y guardamos los empleados en el HashMap
-    // -> si ya existe un empleado con el mismo DNI lanzamos una excepción
-    // -> si no existe el empleado lo guardamos en el HashMap y luego guardamos el HashMap en el archivo JSON
-    public void addEmpleadoToFile(Empleado empleado) throws EmpleadoYaExistenteException, IOException {
-        // Load existing employees from file
-        leerEmpleadosFromFile();
-
-        // Check if the employee already exists
+    // Methodo para agregar un empleado a la colección empleados
+    public void addEmpleadoToCollection(Empleado empleado) throws EmpleadoYaExistenteException {
         if (empleados.containsKey(empleado.getDNI())) {
-            throw new EmpleadoYaExistenteException("Empleado con DNI " + empleado.getDNI() + " ya existe.");
+            throw new EmpleadoYaExistenteException("El empleado ya existe");
         }
-
-        // Add the new employee to the collection
         empleados.put(empleado.getDNI(), empleado);
-
-        // Save the updated collection to the file
-        saveEmpleadosToFileAux();
+    }
+    // metodo para eliminar un empleado de la colección empleados
+    public void eliminarEmpleado(String DNI) {
+        empleados.remove(DNI);
     }
 
-    // Methodo para guardar los empleados en el archivo JSON
-    public void saveEmpleadosToFileAux() throws IOException {
-        try (FileWriter writer = new FileWriter(FILE_PATH)) {
-            gson.toJson(empleados, writer);
-        }
+    // getter y setter para empleados (collections)
+    public HashMap<String, Empleado> getEmpleados() {
+        return empleados;
     }
-
-    // Methodo para cargar los empleados desde el archivo JSON a la colección empleados
-    public void leerEmpleadosFromFile() throws IOException {
-        try (FileReader reader = new FileReader(FILE_PATH)) {
-            Type type = new TypeToken<HashMap<String, Empleado>>() {}.getType();
-            empleados = gson.fromJson(reader, type);
-        } catch (IOException e) {
-            // si no se puede leer el archivo, se crea un nuevo HashMap
-            empleados = new HashMap<>();
-        }
+    public void setEmpleados(HashMap<String, Empleado> empleados) {
+        this.empleados = empleados;
     }
 
     public void mostrarEmpleados() {
@@ -67,5 +46,20 @@ public class GestionHotel {
         }
     }
 
+    // un metodo que lee datos del usuario en la consola y devuelve un objeto Empleado
+
+    public Empleado crearEmpleado(){
+        System.out.println("Ingrese el nombre del empleado: ");
+        String nombre = System.console().readLine();
+        System.out.println("Ingrese el apellido del empleado: ");
+        String apellido = System.console().readLine();
+        System.out.println("Ingrese el DNI del empleado: ");
+        String DNI = System.console().readLine();
+        System.out.println("Ingrese el email del empleado: ");
+        String email = System.console().readLine();
+        System.out.println("Ingrese el telefono del empleado: ");
+        String telefono = System.console().readLine();
+        return new Empleado(nombre, apellido, DNI, telefono, email);
+    }
 
 }

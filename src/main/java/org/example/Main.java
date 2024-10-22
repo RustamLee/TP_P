@@ -1,5 +1,6 @@
 package org.example;
 
+import Gestion.GestionArchivo;
 import Gestion.GestionHotel;
 import Modelo.Empleado;
 
@@ -10,27 +11,19 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        Empleado empleado = new Empleado("Anna", "Gascon", "12345", "Calle Falsa 123", "123456789");
-        Empleado empleado2 = new Empleado("Juan", "Lancome", "54321", "Calle Falsa 123", "123456789");
-        Empleado empleado3 = new Empleado("Maria", "Garcia", "33333", "Calle Falsa 123", "123456789");
-
-
+        // Cargar datos desde el archivo JSON
 
         GestionHotel gestionHotel = new GestionHotel();
-//        try {
-//            gestionHotel.addEmpleadoToFile(empleado);
-//            gestionHotel.addEmpleadoToFile(empleado2);
-//            gestionHotel.addEmpleadoToFile(empleado3);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        GestionArchivo gestionArchivo = new GestionArchivo(gestionHotel);
+        gestionArchivo.cargarDatos();
+
+        // para menu: crear empleado
+        //gestionHotel.addEmpleadoToCollection(gestionHotel.crearEmpleado());
+
         gestionHotel.mostrarEmpleados();
-        Empleado test = new Empleado("Maria", "Garcia", "77777", "Calle Falsa 123", "11111111111");
-        try {
-            gestionHotel.addEmpleadoToFile(test);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+
+        // Guardar datos en el archivo JSON
+        gestionArchivo.guardarDatos();
 
     }
 }
