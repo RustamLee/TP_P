@@ -3,6 +3,7 @@ Trabajo práctico en grupo.  Universidad Tecnológica Nacional, Mar del Plata
 UML diagram: https://drive.google.com/file/d/1h1cFOmklX779Gvo-TJU82N4HqMNciffV/view?usp=sharing
 
 Bloques de proyecto:
+
 1)
 - Gestión de usuarios: 
 Administrar el acceso al sistema para empleados y clientes, métodos de login y logout, métodos para actualizar la contraseña (por defecto la contraseña es DNI, pero después del primer inicio de sesión debe cambiarla y login es email). Después de agregar un nuevo empleado al sistema o crear reservas para un cliente, se crea una contraseña por defecto (número de DNI). La nueva contraseña no puede ser el número del DNI. Después de eliminar un empleado del sistema, el acceso al sistema se bloquea. El cliente puede iniciar sesión en el sistema solo si tiene una reserva activa. Las contraseñas se almacenan en el archivo en forma cifrada.
