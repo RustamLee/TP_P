@@ -1,16 +1,20 @@
 package Modelo;
 
+import Enumeraciones.RoleUsuario;
 import Interfaces.IAccionesUsuarios;
 
 public class Empleado extends Usuario implements IAccionesUsuarios {
-    public String email;//
     public String telefono;
 
-    public Empleado(String nombre, String apellido, String DNI, String email, String telefono) {
-        super(nombre, apellido, DNI);
-        this.email = email;
-        this.telefono = telefono;
+    // Constructor
+public Empleado(String nombre, String apellido, String DNI,RoleUsuario role, String email, String telefono) {
+    super(nombre, apellido, DNI, role, email);
+    if (role != RoleUsuario.ADMINISTRADOR && role != RoleUsuario.RECEPCIONISTA) {
+        throw new IllegalArgumentException("Role solo puede ser ADMINISTRADOR or RECEPCIONISTA");
     }
+    this.email = email;
+    this.telefono = telefono;
+}
 
     public String getDNI() {
         return DNI;
@@ -19,17 +23,22 @@ public class Empleado extends Usuario implements IAccionesUsuarios {
         return email;
     }
 
+    @Override
+    public void cambiarContrasena(String contrasena) {
+        this.contrasenaCifrada = cifrarContrasena(contrasena);
+    }
+
     public void mostrarDatos() {
         System.out.println("Nombre:" + nombre+ " Apellido:" + apellido+ " DNI:" + DNI+" Email:" + email+" Teléfono:" + telefono);
     }
 
+
     @Override
     public void login() {
-        System.out.println("Para entrar al sistema reserva es necesario");
 
     }
     @Override
     public void logout() {
-        System.out.println("Logout de Cliente");
+
     }
 }
