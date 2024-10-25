@@ -30,8 +30,5 @@ public class Cliente extends Usuario implements IAccionesUsuarios {
         System.out.println("Logout de Cliente");
     }
 
-    @Override
-    public void cambiarContrasena(String contrasena) {
-        this.contrasenaCifrada = cifrarContrasena(contrasena);
-    }
+
 }
